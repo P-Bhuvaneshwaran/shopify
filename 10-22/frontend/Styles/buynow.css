@@ -1,0 +1,255 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.buynowPage{
+    /* border: 1px solid black; */
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(168, 164, 164, 0.993);
+    /* justify-content: center; */
+    padding: 20px;
+    .buynowPageCont{
+        background-color: #fff;
+        width: 85%;
+        /* border: 1px solid blue; */
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        border-radius: 3px;
+        .buynowPageCont-row{
+            padding: 10px;
+        }
+
+        .buynowPageCont-row:first-child{
+            background-color: #fff;
+            border-radius: 3px;
+            /* padding: 10px; */
+            padding: 20px 30px;
+            /* border: 1px solid red; */
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* padding-left: 30px; */
+            .continueShop{
+                font-size: 18px;
+                padding-bottom: 10px;
+                /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+            }
+
+            .cartShop{
+                font-size: 18px;
+                padding-top: 10px;
+            }
+
+            .cartCount{
+                /* font-family: ; */
+                font-size: 16px;
+                color: rgb(95, 93, 93);
+                padding: 2px 0px 35px 0px;
+                /* co */
+            }
+            .buynowPageProdDetails{
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.30);
+                /* border: 1px solid black; */
+                display: flex;
+                border-radius: 5px;
+                padding: 10px;
+                justify-content: space-between;
+                align-items: center;
+
+                .buynowPageProdDetails-col{
+                    /* border: 1px solid red; */
+                    display: flex;
+                
+                    .buynowPageProdDetails-col1-row1{
+                        display: flex;
+                        flex-direction: column;
+                        img{
+                            border-radius: 3px;
+                            width: 60px;
+                            height:60px;
+                        }
+                    }
+
+                    .buynowPageProdDetails-col1-row1:nth-child(2){
+                        justify-content: space-between;
+                        padding: 3px 10px;
+                        .prodName{
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-weight: bold;
+                            font-size: 16px;
+                        }
+                        .prodSpec{
+                            font-size: 14px;
+                            color: grey;
+                        }
+                    }
+                }
+                .buynowPageProdDetails-col:last-child{
+                    /* border: 1px solid blue; */
+                    width: 150px;
+                    padding: 10px;
+                    justify-content: space-between;
+                    font-family: Arial, Helvetica, sans-serif;
+                    p:nth-child(2){
+                        font-weight: bold;
+                    }
+
+                    p:nth-child(3){
+                        color: rgb(158, 158, 158);
+                    }
+                }
+            }
+            
+
+        }
+
+        .buynowPageCont-row:last-child{
+            border-radius: 3px;
+            background-color: rgb(16, 51, 209);
+            padding: 15px;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            p:first-child{
+                padding: 10px 0px;
+                color: white;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            p:nth-child(2){
+                font-size: 14px;
+                color: white;
+                padding: 8px 0px;
+            }
+            .card-type{
+                display: flex;
+                /* border: 1px solid black; */
+                margin: 0px 0px 8px 0px;
+                li{
+                    margin: 0px 4px;
+                    padding: 10px 20px;
+                    border-radius: 3px;
+                    border: 2px solid white;
+
+                    i{
+                        font-weight: bold;
+                        font-size: 22px;
+                    }
+
+                }
+                li:first-child{
+                    i{
+                        color: rgb(218, 255, 8);
+                    }
+                }
+                li:nth-child(2){
+                    color: skyblue;
+                }
+                li:nth-child(3){
+                    color: rgb(245, 112, 64);
+                }
+                li:nth-child(4){
+                    i{
+                        font-size: 29px;
+                    }
+                    color: silver;
+                }
+                li:nth-child(5){
+                    color: orange;
+                }
+            }
+
+            form{
+                display: flex;
+                flex-direction: column;
+                padding-bottom: 20px;
+                .buynowPage-fields{
+                    margin: 5px 0px;
+                }
+
+                .buynowPage-fields:not(:last-child){
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+
+                    label{
+                        padding-bottom: 5px;
+                        font-size: 14px;
+                    }
+                    input{
+                        padding: 10px 15px;
+                        background-color: rgba(192, 173, 173, 0.678);
+                        color: white; 
+                        border-radius: 3px;
+                        border: none;
+                    }
+                    ::placeholder{
+                        color: white;
+                    }
+                }
+                .buynowPage-fields:last-child{
+                    /* border: 1px solid black; */
+                    display: flex;
+
+                    .buynowPage-fields-row11{
+                        display: flex;
+                                        flex-direction: column;
+                        label{
+                            padding-bottom: 5px;
+                            color: white;
+                            font-size: 14px;
+                        }
+                        input{
+                            padding: 10px 15px;
+                            background-color: rgba(192, 173, 173, 0.678);
+                            color: white; 
+                            border-radius: 3px;
+                            border: none;
+                            width: 100%;
+                        }
+                        ::placeholder{
+                            color: white;
+                        }
+    
+                    }
+
+                    .buynowPage-fields-row11:last-child{
+                        margin-left: 2px;
+                    }
+                }
+
+            }
+
+            .checkout-ul{
+                padding-top: 15px;
+                color: white;
+
+                li{
+                    display: flex;
+                    font-size: 14px;
+                    align-items: center;
+                    justify-content: space-between;
+                    /* border-bottom: 1px solid black; */
+                    padding: 3px 0px;
+                }
+
+                button{
+                    margin: 5px 0px;
+                    border: none;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 10px 10px;
+                    color: white;
+                    background: rgba(214, 213, 213, 0.63);
+                    font-size: 14px;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+}
+

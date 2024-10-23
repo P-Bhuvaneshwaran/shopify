@@ -1,0 +1,184 @@
+:root{
+    --grey:rgb(141, 138, 138);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footerPage{
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: black;
+    /* background-color: rgb(12, 99, 99); */
+    height: 300px;
+    color: white;
+    /* padding: 20px 60px; */
+    .footer-box1{
+        height: 250px;
+        /* background-color: lightcoral; */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .inner-box{
+            /* border: 1px solid red; */
+            width: 80%;
+            /* padding: 0px 20px; */
+            /* gap: px; */
+            height: 80%;
+            display: grid;
+            grid-template-columns: 0.8fr 0.4fr 0.4fr 0.4fr;
+            .top-box{
+                /* width: 200px; */
+                /* border: 1px solid ;   */
+                
+                ul{
+                    li:first-child{
+                        margin-bottom: 10px;
+                        font-weight: bold;
+                    }
+                    li:not(:first-child){
+                        font-size: 14px;
+                        height: 35px;
+                        color: var(--grey);
+                        /* color: rgb(141, 138, 138); */
+                    }
+                }
+            }
+
+            .top-box:not(:first-child){
+                padding: 20px 0px;
+
+                ul{
+                    li:first-child{
+                        padding-bottom: 8px;
+                    }
+                    li{
+                        padding: 3px 0px;
+                    }
+                }
+            }
+
+            .top-box:first-child{
+                padding: 10px;
+                margin-right: 80px;
+                p:first-child{
+                    font-size: 24px;
+                }
+
+                p:last-child{
+                    padding-top: 30px ;
+                    font-size: 14px;
+                    color: var(--grey);
+                    font-family: Arial, Helvetica, sans-serif;
+                    text-align: justify;
+                    text-indent: 50px;
+                    line-height: 20px;
+                }
+            }
+
+            .top-box:last-child{
+                ul{
+                    li:nth-child(2){
+                        span{
+                            padding-left: 10px;
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+    .footer-box2{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        /* border: 1px solid white; */
+        .outer-box{
+            width: 80%;
+            padding: 10px 0px;
+
+        .box-1{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 14px;
+            height:80px;
+            ul{
+                display: flex;
+            }
+            .boxx-1{
+                ul{
+                    li{
+                        font-weight: bold;
+                        padding: 10px;
+                    }
+                }
+            }
+            .boxx-2{
+                margin-top: 40px;
+                height: 100px;
+                ul{
+                    /* background-color: lightgreen; */
+                    width: 200px;
+                    i{
+                        font-size: 18px;
+                        /* border: 1px solid black; */
+                        padding: 10px;
+                        color: rgb(233, 226, 226);
+                        /* font-weight: normal; */
+                    }
+              
+                }
+
+                button{
+                    border-radius: 20px;
+                    padding: 10px 30px;
+                    border: none;
+                    background-color: rgb(240, 6, 150);
+                    color: white;
+                    margin:8px 0px 0px 30px;
+                    cursor: pointer;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                }
+                button:hover{
+                    background-color: white;
+                    color: black;
+
+                }
+            }
+
+        }
+
+        .box-2{
+            p{
+                width: 40%;
+                /* border: 1px sol/id; */
+                padding-left: 10px;
+                color: var(--grey);
+                line-height: 20px;
+                font-size: 14px;
+            }
+        }
+
+        .box-3{
+            p{
+                text-align: center;
+                padding: 20px 0px;
+                font-size: 14px ;
+                color: var(--grey);
+            }
+        }
+    }
+}
+}

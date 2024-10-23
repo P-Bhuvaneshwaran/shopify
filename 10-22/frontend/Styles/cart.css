@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cartPage{
+    min-height: 100vh;
+    #cartItems{
+        width: 100%;        padding: 20px;        display: flex;        align-items: center;        justify-content: center; 
+        table{
+            border-spacing: 0px 15px;
+            /* margin-top: 20px; */
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            text-align: center;
+            width: 90%;
+            padding: 20px;
+            border-collapse:separate;
+        }
+
+        tr{
+             td:nth-child(1){
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                display: grid;
+                grid-template-columns: 45% 55%;
+                grid-template-rows: 150px;
+        
+                #img--div{
+                    width: 100%;
+                    
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+                #img--details{
+                    padding: 10px 20px;
+        
+                    p:first-child{
+                        font-size: 20px;
+                        font-weight: 550;
+                        text-transform: uppercase;
+                    }
+                    p:nth-child(2){
+                        padding: 2px 0px 5px 0px;
+                        color: grey;
+                        font-size: 12px;
+        
+                        span{
+                            text-transform: uppercase;
+                        }
+
+                    }           
+                    p:last-child{
+                        color: rgb(82, 80, 80);
+                        padding: 5px 0px;
+                        text-align: justify;
+                        /* color: red; */
+                        /* width: 100%; */
+                        height: 100px;
+                        overflow: hidden;
+                        /* background-color: lightblue; */
+                    }
+                }
+
+            }
+        }
+        th,td{
+            padding: 15px;
+        }
+        
+        td{
+            text-align: left;
+            border-bottom: 1px solid rgb(211, 209, 209);
+        }
+        
+        tr:not(:first-child){
+           border-radius: 3px;        
+            height: 150px;
+        }
+        
+        tr:not(:first-child):hover{
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.20), inset 2px 2px 2px rgba(0, 0, 0, 0.10);
+        }
+
+        th:first-child, td:first-child{
+            width: 500px;
+        }
+
+        th:not(:first-child), td:not(:first-child){
+            width: calc((90%-350px)/4);
+            text-align: center;
+           }
+
+        td:nth-child(3){
+           
+            span{
+           
+                button{
+                    padding: 5px 8px;
+                }
+           
+                input{
+                    padding: 5px 8px;
+                    margin: 0px 3px;
+                    text-align: center;
+                    width: 60px;
+                }
+            }
+        }
+
+        td:nth-child(5){
+            position: relative;
+            /* background-color: lightblue; */
+            i:hover{
+                font-size: 22px;
+                color: red;
+            }
+        }
+
+    }
+}
+
+#emtCartDiv{
+    margin-top: 80px;
+    border: 1px solid black;
+    width: 500px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    p{
+        padding: 15px 0px;
+        color: red;
+    }
+    img{
+        width: 80%;
+        height: 40%;
+    }
+    button{
+        padding: 10px 15px;
+        text-transform: uppercase;
+
+        
+    }
+}
+#cartPage-buynowBtn
+{
+    /* border: 1px solid black; */
+    padding: 10px;
+    float: right;
+    margin-right: 80px;
+    button{
+        padding: 10px 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(255, 230, 0);
+    }
+}

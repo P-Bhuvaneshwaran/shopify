@@ -26,3 +26,6 @@ button:hover{
 }
 
 
+.fa-bars{
+    cursor: pointer;
+}

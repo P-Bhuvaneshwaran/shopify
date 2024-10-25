@@ -25,7 +25,7 @@ app.use(express.json());
 // }
 
 app.get("/products", async (req, res) => {
-    const products = await ProductCollection.find().toArray()
+    const products = await prodCollection.find().toArray()
     res.status(200).json(products)
 })
 
@@ -41,12 +41,17 @@ async function connect(){
         const database = client.db("shopify");
         prodCollection = database.collection("prodCollection");
         cartCollection = database.collection("cartCollection");
+        // const result = await prodCollection.updateOne({productName: "Fastrack Vyb Successor Quartz"},{$set:{category:"watch", type: "analog",description: "more comfortable, more suitable " , specification: "Brand: Fastrack,occasion: casual, watch movement: Quartz"}})
+        // const result = await prodCollection.updateOne({productName: "The Psychology of Money (Tamil)"},{$set:{category: "books", type: "psychology"}})
+        // const book = ["I Have The Streets"]
+        // const results = await prodCollection.updateOne({category: "beauty"},{$set:{category:"beauty care"}})
         // const result = await prodCollection.deleteOne({_id: new ObjectId('671754b0d1db4c971d293328')})
         // const result = await cartCollection.deleteOne({_id: new ObjectId('67169bce03cdaf3ba9576cba')})
+        // const result = await cartCollection.find({category: "Bag"})
         // const result = await prodCollection.deleteMany({category:"Laptop"})
-        // const result = await prodCollection.deleteOne({name:"KILLER Louis Laptop Bag"})
         // const result = await prodCollection.insertOne({name:"oppo"})
         // console.log(`deleted successfully`)
+        // console.log(result);
         
         // const products = await prodCollection.find({}).toArray();
         // console.log(products);
@@ -58,8 +63,25 @@ async function connect(){
 
     app.get("/products-list", async (req, res) => {
         const products = await prodCollection.find().toArray()
+        // const pros = await prodCollection.find({productName,_id,category}).toArray()
+        const cat = products.map(allprod =>allprod.category);
         res.status(200).json(products)
-        console.log(products);
+        console.log(cat);
+        
+        
+    })
+    
+    app.get("/products-category-list/:category", async (req, res) => {
+        // const prod = await prodCollection.find('').toArray()
+        const category = req.params.category;
+        console.log(category);
+        try{
+            const productsByCategorey = await prodCollection.find({category}).toArray();
+            console.log(productsByCategorey)
+            res.status(200).json(productsByCategorey)
+        }catch(e){
+            console.log("error while fetching category based products", e);
+        }
         
     })
 
@@ -70,7 +92,7 @@ async function connect(){
     });
 
     app.get("/cart-list", async (req, res) => {
-        const cartItems = await cartCollection.find().toArray();
+        const cartItems = await cartCollection.find({}).toArray();
         res.status(200).json(cartItems);
     });
     

@@ -36,17 +36,17 @@ const ProductCard = ({ product })=>{
     return(
         <div>
             <div className="prod-showcase" key={product._id}>
-                            <img src={product.image} alt="" />
-                            <div id="prod-img-details">
-                                <p>{product.productName}</p>
-                                <p><i className='fa-solid  fa-indian-rupee-sign'></i>  {product.price} <span>{product.offer}%</span></p>
-                                <div id="ratingDiv">
-                                    <p>{product.rating}</p>
-                                    <i class="fa-solid fa-star-half-stroke"></i>
-                                </div>
-                                <button onClick={handleAddToCart} >Add to cart</button>
-                            </div>
-                        </div>
+                <img src={product.image} alt="" />
+                <div id="prod-img-details">
+                    <p>{product.productName}</p>
+                    <p><i className='fa-solid  fa-indian-rupee-sign'></i>  {product.price} <span>{product.offer}%</span></p>
+                    <div id="ratingDiv">
+                        <p>{product.rating}</p>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <button onClick={handleAddToCart} >Add to cart</button>
+                </div>
+              </div>
         </div>
     )
 }

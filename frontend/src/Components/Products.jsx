@@ -4,56 +4,57 @@ import '../Styles/product.css'
 import { NavLink } from "react-router-dom";
 import ProductCard from "./ProductCard";
 const Products = () =>{
-
-    const [loading, setLoading] = useState(true);    
+    const [category, setCategory] = useState(null);
+    const [loading, setLoading] = useState(false);    
     const [productList, setProductList] = useState([]);
     const getProducts = async () => {
+        setLoading(true);
         const response = await fetch('http://localhost:5001/products-list');
         const data = await response.json();
         setProductList(data);
         console.log(data)
-        console.log(loading)
-    setLoading(false);
-  };
+        console.log("Loading status:", loading)
+        setLoading(false);
+    };
+    console.log("category:- ",category)
+    
+    const getCategorizedProduts = async () =>{
+        setLoading(true)
+        const response = await fetch(`http://localhost:5001/products-category-list/${category}`);
+        const data = await response.json();
+        console.log("category based products",data);
+        setProductList(data);
+        console.log("Loading status:", loading)
+    setLoading(false)
+  }
 
     
   useEffect(()=>{
     getProducts();
   },[])
   
-  async function AddtoCart(e){
+  const productListHampFunc = () =>{
+      getCategorizedProduts();
+}
 
-    
-  const response = await fetch('http://localhost:5001/cart', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(cartItem),
-  });
-
-  
-  if (response.ok) {
-    alert(`${productList.title} added to cart!`);
-  } else {
-    alert('Error adding product to cart.');
+const setCategoryFunc=(e)=>{
+    setCategory(e.target.textContent.toLowerCase())
+    getCategorizedProduts();
   }
-  
-  };
 
 
-  if (loading) {
-    console.log(loading)
-    return <div style={{color:"red", textAlign:"center",height:"100vh",display:"flex", alignItems:"center",justifyContent:"center"}}>Loading...</div>;
-  }
+//   if (loading) {
+//     console.log(loading)
+//     return <div style={{color:"red", textAlign:"center",height:"100px",display:"flex", alignItems:"center",justifyContent:"center"}}>Loading...</div>;
+//   }
 
 
   return(
         <div className="productsPage">
         <div id="product-body">
 {/* 2 */}
-            <div className="prod-body-top" style={{display:"none"}}>
-                <span id="prod-body-hamb" ><i class="fa-solid fa-bars" ></i></span>
+            <div className="prod-body-top">
+                <span id="prod-body-hamb" onClick={productListHampFunc}><i class="fa-solid fa-bars" ></i></span>
                 <div id="prod-body-searchDiv">
                     <input type="text" placeholder="Search item here..." />
                     <span id="prod-body-searchIcon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -65,28 +66,27 @@ const Products = () =>{
 
             <div id="product-details" >
                 <div id="prod-list">
-                    <ul style={{display:"none"}}>
-                        <li><i class="fa-solid fa-headphones"></i> <span>Accessorries</span></li>
-                        <li><i class="fa-solid fa-bag-shopping"></i> <span>Bags</span></li>
-                        <li><i class="fa-solid fa-book"></i> <span>Books</span></li>
-                        <li><i class="fa-solid fa-soap"></i> <span>Beauty Care</span></li>
-                        <li><i class="fa-solid fa-camera"></i> <span>Camera</span></li>
-                        <li><i class="fa-solid fa-child-dress"></i> <span>Fashion</span></li>
-                        <li><i class="fa-solid fa-store"></i> <span>Home Appliances</span></li>
-                        <li><i class="fa-solid fa-mobile-screen-button" ></i> <span>Mobile</span></li>
-                        <li><i class="fa-solid fa-shoe-prints"></i> <span>Shoe</span></li>
-                        <li><i class="fa-solid fa-glasses"></i> <span>Sunglasses</span></li>
-                        <li><i class="fa-solid fa-clock"></i> <span>Watches</span></li>
-                        <li><i class="fa-solid fa-laptop"></i> <span>Laptop</span></li>
-                        <li><i class="fa-solid fa-gamepad"></i> <span>Toys</span></li>
-                                                
-                        <li><i class="fa-solid fa-volleyball"></i> <span>Sports</span></li>                        
+                    <ul>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-headphones"></i> <span>Accessories</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-bag-shopping"></i> <span>Bags</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-book"></i> <span>Books</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-soap"></i> <span>Beauty Care</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-camera"></i> <span>Camera</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-child-dress"></i> <span>Fashion</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-store"></i> <span>Home Appliances</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-mobile-screen-button" ></i> <span>Mobile</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-shoe-prints"></i> <span>Shoe</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-glasses"></i> <span>Sunglasses</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-clock"></i> <span>Watches</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-laptop"></i> <span>Laptop</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-gamepad"></i> <span>Toys</span></li>                     
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-volleyball"></i> <span>Sports</span></li>                        
                     </ul>
                 </div>
                 <div id="prod-list-details">
                     <div id="prod-list-details-top">
-                        <div id="prod-category-variant">
-                            {/* <ul>
+                        <div id="prod-category-variant" style={{display:"none"}}>
+                            <ul>
                                 <i className="fa-solid fa-filter"></i>
                                 <li>Vivo</li>
                                 <li>Oppo</li>
@@ -94,15 +94,53 @@ const Products = () =>{
                                 <li>Mi</li>
                                 <li>1+</li>
                                 <li>Realme</li>
-                            </ul> */}
+                            </ul>
+                            <ul>
+                                <i className="fa-solid fa-filter"></i>
+                                <li>Vivo</li>
+                                <li>Oppo</li>
+                                <li>Iphone</li>
+                                <li>Mi</li>
+                                <li>1+</li>
+                                <li>Realme</li>
+                            </ul>
                         </div>
                     </div>
                     <div id="prod-list-details-middle">
                         {
+                            loading ? <div style={{padding:"20px 100px",color:"grey",fontWeight:"bold"}}>
+                                <p>Loading</p>
+                            </div> : 
+                            productList.map((product) => (
+                                <ProductCard key={product._id} product={product} />
+                            ))
+                        }
 
-                        productList.map((product) => (
-                            <ProductCard key={product._id} product={product} />
-                        ))}
+                    {/* <div className="prod-showcase">
+                     <img src="/src/images/duke.jpeg" alt="" />
+                    <div id="prod-img-details">
+                    <p>Duke 250</p>
+                    <p><i className='fa-solid  fa-indian-rupee-sign'></i>  250 <span>10 %</span></p>
+                    <div id="ratingDiv">
+                        <p>3.4</p>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <button>Add to cart</button>
+                </div>
+                    </div>
+                    <div className="prod-showcase">
+                     <img src="/src/images/duke.jpeg" alt="" />
+                    <div id="prod-img-details">
+                    <p>Duke 250</p>
+                    <p><i className='fa-solid  fa-indian-rupee-sign'></i>  250 <span>10 %</span></p>
+                    <div id="ratingDiv">
+                        <p>3.4</p>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <button>Add to cart</button>
+                </div>
+                    </div> */}
+
                        
                     </div>
                 </div>

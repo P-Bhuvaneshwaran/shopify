@@ -21,6 +21,10 @@
             justify-content: space-between;
             padding: 20px 30px;
 
+            #prod-body-hamb{
+                border: 1px solid black;
+                padding: 3px;
+            }
             #prod-body-searchDiv{
                 position: relative;
                 input{
@@ -44,7 +48,7 @@
 
         #product-details{
             display: grid;
-            grid-template-columns: 10% 80%;
+            grid-template-columns: 20% 80%;
 
             #prod-list{
                 ul{
@@ -74,8 +78,9 @@
                         font-family: Arial, Helvetica, sans-serif;
                         background-color: rgb(184, 189, 189);
                         span{
+                            cursor: pointer;
                             color: grey;
-                            font-weight: bold;
+                            /* font-weight: bold; */
                         }
                     }
                     

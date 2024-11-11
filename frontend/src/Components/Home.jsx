@@ -8,7 +8,7 @@ const Home = () =>{
     const [tCategoryName, setTCategoryName] = useState([]);
 
     const getTopCategoryName = async() =>{
-        const response = await fetch('http://localhost:5001/top-category-name');
+        const response = await fetch('https://shopify-xufe.onrender.com/top-category-name');
         try{
             const data = await response.json();
             console.log("top-categories")
@@ -43,6 +43,11 @@ const Home = () =>{
                             </div>
                             <p>Mobile</p>
                         </div>
+                        {tCategoryName.map((item)=>{
+                            return(
+                                <li></li>
+                            )
+                        })}
                         <div className="categories">
                             <div className="img-holder">
                                   <img src="/src/Images/sub.jpeg" alt="" />

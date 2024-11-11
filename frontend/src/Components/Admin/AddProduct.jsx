@@ -37,7 +37,7 @@ const AddProduct = () =>{
     const addProductFunc = async(e) =>{
         e.preventDefault();
 
-        const response = await fetch('http://localhost:5001/products-list', {
+        const response = await fetch('https://shopify-xufe.onrender.com/products-list', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

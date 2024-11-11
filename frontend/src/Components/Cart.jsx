@@ -9,7 +9,7 @@ const Cart = () =>{
     const [couponCode, setCouponCode] = useState(null);
     const [cartList, setCartList] = useState([]);
     const getCartProducts = async () => {
-        const response = await fetch('http://localhost:5001/cart-list');
+        const response = await fetch('https://shopify-xufe.onrender.com/cart-list');
         const data = await response.json();
         setCartList(data);
         console.log(data)
@@ -18,7 +18,7 @@ const Cart = () =>{
     };
 
     const handleDeleteItem = async (id) => {
-        const response = await fetch(`http://localhost:5001/cart-list/${id}`, {
+        const response = await fetch(`https://shopify-xufe.onrender.com/cart-list/${id}`, {
           method: 'DELETE',
         });
         if (response.ok) {

@@ -17,7 +17,7 @@ const ProductCard = ({ product })=>{
           quantity: 1,
         };
     
-        const response = await fetch('http://localhost:5001/cart-list', {
+        const response = await fetch('https://shopify-xufe.onrender.com/cart-list', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -85,6 +85,7 @@ useEffect(()=>{
                                 <span style={{display:"none"}}>1</span>
                             </li>
                             <li>
+                                {/*  */}
                                 {/* <NavLink to={"cart-items"}><i className="fa-solid fa-cart-shopping home-nav1-link" ></i></NavLink> */}
                             <i class="fa-solid fa-bars" onClick={slideUserDiv}></i>
                              </li>

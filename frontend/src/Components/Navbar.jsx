@@ -64,10 +64,10 @@ useEffect(()=>{
                     <h1><i class="fa-brands fa-shopify"></i>Shopify</h1>
                     {!isAdmin ? 
                     <ul>
-                        <li><NavLink className="nav-link" to={'/home'} end>Home</NavLink></li>
+                        <li><NavLink className="nav-link" to={'/'} end>Home</NavLink></li>
                         <li><NavLink className="nav-link" to={'/about-us'}>About</NavLink></li>
                         <li><NavLink className="nav-link" to={'/products'}>Products</NavLink></li>
-                        {/* <li><NavLink className="nav-link" to={'/new-items'}>New</NavLink></li> */}
+                        <li><NavLink className="nav-link" to={'/new-items'}>New</NavLink></li>
                         <li><NavLink className="nav-link" to={'/contact-us'}>Contact</NavLink></li>
                     </ul>
                     :

@@ -4,7 +4,7 @@ import '../Styles/product.css'
 import { NavLink } from "react-router-dom";
 import ProductCard from "./ProductCard";
 const Products = () =>{
-    const [category, setCategory] = useState(null);
+    // const [category, setCategory] = useState(null);
     const [loading, setLoading] = useState(false);    
     const [productList, setProductList] = useState([]);
     const getProducts = async () => {
@@ -13,33 +13,38 @@ const Products = () =>{
         const data = await response.json();
         setProductList(data);
         console.log(data)
-        console.log("Loading status:", loading)
+        // console.log("Loading status:", loading)
         setLoading(false);
     };
-    console.log("category:- ",category)
     
-    const getCategorizedProduts = async () =>{
+    const getCategorizedProduts = async (category) =>{
+        console.log("called:- ",category)
         setLoading(true)
         const response = await fetch(`http://localhost:5001/products-category-list/${category}`);
         const data = await response.json();
-        console.log("category based products",data);
+        console.log("category based products",response);
         setProductList(data);
         console.log("Loading status:", loading)
     setLoading(false)
-  }
+}
+
 
     
   useEffect(()=>{
-    getProducts();
-  },[])
-  
-  const productListHampFunc = () =>{
-      getCategorizedProduts();
-}
+      getProducts();
+    },[])
+    
 
 const setCategoryFunc=(e)=>{
-    setCategory(e.target.textContent.toLowerCase())
-    getCategorizedProduts();
+    const categoryType = e.target.textContent.toLowerCase();
+    
+    console.log("calling:", categoryType);
+    
+    getCategorizedProduts(categoryType);
+}
+const setTypeCategoryFunc=()=>{
+    const categoryTypeName = e.target.textContent.toLowerCase();
+   getCategorizedTypeProduts(categoryTypeName)
   }
 
 
@@ -54,7 +59,7 @@ const setCategoryFunc=(e)=>{
         <div id="product-body">
 {/* 2 */}
             <div className="prod-body-top">
-                <span id="prod-body-hamb" onClick={productListHampFunc}><i class="fa-solid fa-bars" ></i></span>
+                <span id="prod-body-hamb" ><i class="fa-solid fa-bars" ></i></span>
                 <div id="prod-body-searchDiv">
                     <input type="text" placeholder="Search item here..." />
                     <span id="prod-body-searchIcon"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -76,7 +81,7 @@ const setCategoryFunc=(e)=>{
                         <li onClick={setCategoryFunc}><i class="fa-solid fa-store"></i> <span>Home Appliances</span></li>
                         <li onClick={setCategoryFunc}><i class="fa-solid fa-mobile-screen-button" ></i> <span>Mobile</span></li>
                         <li onClick={setCategoryFunc}><i class="fa-solid fa-shoe-prints"></i> <span>Shoe</span></li>
-                        <li onClick={setCategoryFunc}><i class="fa-solid fa-glasses"></i> <span>Sunglasses</span></li>
+                        <li onClick={setCategoryFunc}><i class="fa-solid fa-glasses"></i> <span>Sunglass</span></li>
                         <li onClick={setCategoryFunc}><i class="fa-solid fa-clock"></i> <span>Watches</span></li>
                         <li onClick={setCategoryFunc}><i class="fa-solid fa-laptop"></i> <span>Laptop</span></li>
                         <li onClick={setCategoryFunc}><i class="fa-solid fa-gamepad"></i> <span>Toys</span></li>                     
@@ -118,6 +123,7 @@ const setCategoryFunc=(e)=>{
 
                     {/* <div className="prod-showcase">
                      <img src="/src/images/duke.jpeg" alt="" />
+                     <span><i className="fa-solid fa-heart"></i></span>
                     <div id="prod-img-details">
                     <p>Duke 250</p>
                     <p><i className='fa-solid  fa-indian-rupee-sign'></i>  250 <span>10 %</span></p>
@@ -139,7 +145,35 @@ const setCategoryFunc=(e)=>{
                     </div>
                     <button>Add to cart</button>
                 </div>
-                    </div> */}
+                    
+                    
+                    </div> 
+                    <div className="prod-showcase">
+                     <img src="/src/images/duke.jpeg" alt="" />
+                    <div id="prod-img-details">
+                    <p>Duke 250</p>
+                    <p><i className='fa-solid  fa-indian-rupee-sign'></i>  250 <span>10 %</span></p>
+                    <div id="ratingDiv">
+                        <p>3.4</p>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <button>Add to cart</button>
+                </div>
+                    </div>
+                    <div className="prod-showcase">
+                     <img src="/src/images/duke.jpeg" alt="" />
+                    <div id="prod-img-details">
+                    <p>Duke 250</p>
+                    <p><i className='fa-solid  fa-indian-rupee-sign'></i>  250 <span>10 %</span></p>
+                    <div id="ratingDiv">
+                        <p>3.4</p>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <button>Add to cart</button>
+                </div>
+                    
+                    
+                    </div>  */}
 
                        
                     </div>

@@ -118,7 +118,7 @@ const Signup = () =>{
     return(
         <div className="signupPage" id="authDiv">
             <div id="auth-container">
-                <h2>Continue</h2>
+                <h2>Create New Account</h2>
                 <form action="/auth-login" onSubmit={validateSignupForm}>
                     <div id="auth-fields">
                         <label htmlFor="username">Username</label>

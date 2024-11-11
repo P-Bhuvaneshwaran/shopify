@@ -26,7 +26,7 @@ function App() {
     <div> 
         {!hideNavPath.includes(locate.pathname) && <Navbar></Navbar>}
         <Routes>
-          <Route path='/home' element={<Home/>}></Route>
+          <Route path='/' element={<Home/>}></Route>
           <Route path='/about-us' element={<About/>}></Route>
           <Route path='/products' element={<Products/>}></Route>
           <Route path='/new-items' element={<New/>}></Route>

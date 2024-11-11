@@ -32,7 +32,7 @@ const Login = () => {
         signInWithEmailAndPassword(auth,email,pass)
         .then(()=>{
             console.log("logined successfully")
-            navigate('/home');   
+            navigate('/');   
         })
         .catch((error)=>{
             console.log(error.code)
@@ -111,7 +111,7 @@ const Login = () => {
         <div id="auth-container">
             <h2>Continue</h2>
             
-            <form action="/home" onSubmit={validateLoginForm}>
+            <form action="/" onSubmit={validateLoginForm}>
                 <div id="auth-fields">
                     <label htmlFor="email">Email</label>
                     <input type="text" name="email" id="" placeholder="Enter Your Email Address" onChange={(e)=>setEmail(e.target.value)} />

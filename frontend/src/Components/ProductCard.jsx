@@ -36,6 +36,7 @@ const ProductCard = ({ product })=>{
     return(
         <div>
             <div className="prod-showcase" key={product._id}>
+            <span className='heartSpan'><i className="fa-solid fa-heart"></i></span>
                 <img src={product.image} alt="" />
                 <div id="prod-img-details">
                     <p>{product.productName}</p>

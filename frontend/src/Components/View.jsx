@@ -6,7 +6,7 @@ const View = ({id})=>{
     
     const [productList, setProductList] = useState([]);
     const getProducts = async () => {
-        const response = await fetch(`https://shopify-xufe.onrender.com/products-list/${id}`);
+        const response = await fetch(`https://shopify-1-k9nw.onrender.com/products-list/${id}`);
         const data = await response.json();
         setProductList(data);
         console.log(data)

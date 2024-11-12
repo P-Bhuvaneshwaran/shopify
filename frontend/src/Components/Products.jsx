@@ -9,7 +9,7 @@ const Products = () =>{
     const [productList, setProductList] = useState([]);
     const getProducts = async () => {
         setLoading(true);
-        const response = await fetch('https://shopify-xufe.onrender.com/products-list');
+        const response = await fetch('https://shopify-1-k9nw.onrender.com/products-list');
         const data = await response.json();
         setProductList(data);
         console.log(data)
@@ -20,7 +20,7 @@ const Products = () =>{
     const getCategorizedProduts = async (category) =>{
         console.log("called:- ",category)
         setLoading(true)
-        const response = await fetch(`https://shopify-xufe.onrender.com/products-category-list/${category}`);
+        const response = await fetch(`https://shopify-1-k9nw.onrender.com/products-category-list/${category}`);
         const data = await response.json();
         console.log("category based products",response);
         setProductList(data);

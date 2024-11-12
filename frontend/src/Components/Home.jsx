@@ -8,7 +8,7 @@ const Home = () =>{
     const [tCategoryName, setTCategoryName] = useState([]);
 
     const getTopCategoryName = async() =>{
-        const response = await fetch('https://shopify-xufe.onrender.com/top-category-name');
+        const response = await fetch('https://shopify-1-k9nw.onrender.com/top-category-name');
         try{
             const data = await response.json();
             console.log("top-categories")

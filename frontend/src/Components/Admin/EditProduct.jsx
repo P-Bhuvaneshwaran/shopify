@@ -6,7 +6,7 @@ const EditProduct = () =>{
     const [productList, setProductList] = useState([]);
 
     useEffect(()=>{
-        fetch('https://shopify-xufe.onrender.com')
+        fetch('https://shopify-1-k9nw.onrender.com')
         .then((res)=>res.json())
         .then((data)=>setProductList(data))
         .catch((e)=>console.log(e)

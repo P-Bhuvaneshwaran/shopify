@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { query } from 'express';
 import cors from 'cors';
 
 import {MongoClient, ObjectId} from 'mongodb';
@@ -7,22 +7,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-// const app = express()
-// app.use(cors())
-// app.use(express.json())
-
-// dotenv.config()
-
-// const client = new MongoClient(process.env.MONGO_URI)
-
-// let ProductCollection;
-// let CartCollection;
-
-// const main = async () => {
-//     await client.connect().then(console.log("connected with MongoDB")).catch(err => console.log(err))
-//     ProductCollection = client.db("projectdatabase").collection("products")
-//     CartCollection = client.db("projectdatabase").collection("carts")
-// }
 
 app.get("/products", async (req, res) => {
     const products = await prodCollection.find().toArray()
@@ -41,6 +25,12 @@ async function connect(){
         const database = client.db("shopify");
         prodCollection = database.collection("prodCollection");
         cartCollection = database.collection("cartCollection");
+       
+        //    TESTING PART
+
+        // const res = await prodCollection.find().toArray();
+        // console.log(res);
+
         // const results = await prodCollection.updateOne({productName: "Back Case for iPhone 13"},{$set:{category:"accessories"}})
         // const result = await prodCollection.deleteOne({_id: new ObjectId("671738a605059752a04ed8d4")})
         // const result = await prodCollection.deleteOne({price: "1,22,990"})
@@ -59,6 +49,8 @@ async function connect(){
     }
 
 
+    // get all product details
+
     app.get("/products-list", async (req, res) => {
         const products = await prodCollection.find().toArray()
         // const pros = await prodCollection.find({productName,_id,category}).toArray()
@@ -68,21 +60,83 @@ async function connect(){
         
         
     })
-    
-    app.get("/products-category-list/:category", async (req, res) => {
+
+    // get all category list details
+    app.get("/products/all-category", async (req, res) => {
+        const category = await prodCollection.distinct("category")
+        res.status(200).json(category)
+        // console.log(category);
         
+    })
+
+
+    // category based product details
+    app.get("/products-category-list/:category", async (req, res) => {
         const category = req.params.category;
 
-        // console.log(category);
+        console.log(category);
         try{
             const productsByCategorey = await prodCollection.find({category}).toArray();
             const typeByCategorey = await prodCollection.distinct("type", {category: category});
-            // console.log(typeByCategorey); 
-            res.status(200).json(productsByCategorey)
-        }catch(e){
+            // console.log(typeByCategorey)
+            // console.log(productsByCategorey)
+            res.status(200).json({categoryProds: productsByCategorey, categorytypes:typeByCategorey})
+          }catch(e){
             console.log("error while fetching category based products", e);
-        }
+          }
+          
+        })
+    app.get("/products-search-list/:searchQuery", async (req, res) => {
+        // const category = req.params.categ;
+        console.log("99999999999999999999999999999999999999999999999999")
+        const query = req.params.searchQuery;
+        console.log(query);
+        try{
+            const searchItem = await prodCollection.find({
+              $or: [
+                { category: { $regex: query, $options: 'i' } },
+                { name: { $regex: query, $options: 'i' } },
+                { type: { $regex: query, $options: 'i' } }
+              ]
+            }).toArray()
+            // const typeByCategorey = await prodCollection.distinct("type", {category: category});
+            res.status(200).json(searchItem);
+            
+            if (searchItem.length === 0) {
+              // No matching products
+              return res.status(404).json({ message: `No products found for "${query}"` });
+            }
+            // console.log(searchItem);
+          }catch(e){
+            res.status(500).json({ message: 'Error fetching products, No products matched', error: e.message });
+  
+            console.log("error while fetching category based products", e);
+          }
+          
+        })
+
+
+        app.get("/products-category-type-list/:category", async (req, res) => {
+              
+              const category = req.params.category;
+              const type = req.query.typename;
+            console.log(category)
+            console.log(type)
+              const types = await prodCollection.find({category,type}).toArray();
+            
+            res.status(200).json(types)
+          })
+  // category based type list
+  app.get("/products-category-types-list/:category", async (req, res) => {
         
+        const category = req.params.category;
+      const types = await prodCollection.aggregate([
+        { $match: { category: category } }, 
+        { $group: { _id: "$type" } },
+        { $project: {  type: "$_id", _id: 0 } } 
+      ]).toArray();
+      
+      res.status(200).json(types)
     })
 
     app.post("/products-list", async (req, res) => {
@@ -98,52 +152,73 @@ async function connect(){
     
     app.get("/top-category-name", async (req, res) => {
         console.log("hai");
-        // const topCatNames = await prodCollection.find({},{projection:{category:1, _id:0}}).toArray();
-       
         
-        const limitedTopCatNames = await prodCollection.find({},{projection:{offer:1,category:1, _id:0}}).toArray();
-       
-        // const topCatNames = await prodCollection.find(
-        //     { offer: { $gte: 20 } },
-        //     { projection: { category: 1, _id: 0 } } // Project only the category field
-        //   ).toArray();  // Convert the cursor to an array
-          
-          console.log(limitedTopCatNames);
-        //   console.log(topCatNames);
-        const pipeline = [
-            {
-              $addFields: {
-                offer: { $toDouble: "$offer" }  // Convert offer to number if it's a string
-              }
-            },
-            {
-              $match: {
-                offer: { $gte: 50 }  // Match documents where offer >= 50
-              }
-            },
-            {
-              $group: {
-                _id: "$category"  // Group by category
-              }
-            },
-            {
-              $project: {
-                category: "$_id",  // Rename _id to category
-                _id: 0  // Remove _id from the output
-              }
-            },{
-    $limit: 7  // Limit the result to 7 categories
-  }
-          ];
-          
-          const result = await prodCollection.aggregate(pipeline).toArray();
-          console.log(result);
-          res.status(200).json(result);
-                   
+      const result = await prodCollection.aggregate([
+        {
+          $match:{
+            $expr: {$gte: [{ $toInt: "$offer"},60]}
+          }
+        },
+        {
+          $group:{
+            _id:"$category",
+            productDetails:{$first: "$$ROOT"}
+          }
+        },{
+          $sort:{
+            "productDetails.offer" :-1
+          }
+        },{
+          $limit:7
+        },
+        {
+          $project:{
+            category: "$_id",
+            productDetails:1,
+            _id:0
+          }
 
+        }
+      ]).toArray();
+      
+      res.status(200).json(result);
+        
+      });
+    
+    app.get("/top-sell-revamp", async (req, res) => {
+        console.log("hai2");
+        
+      const result = await prodCollection.aggregate([
+        {
+          $match:{
+            $expr: {$gte: [{ $toInt: "$offer"},60]}
+          }
+        },
+        {
+          $group:{
+            _id:"$category",
+            productDetails:{$first: "$$ROOT"}
+          }
+        },{
+          $sort:{
+            "productDetails.offer" :-1
+          }
+        },{
+          $limit:4
+        },
+        {
+          $project:{
+            category: "$_id",
+            productDetails:1,
+            _id:0
+          }
 
-        // console.log(topCatNames);
-    });
+        }
+      ]).toArray();
+      
+      res.status(200).json(result);
+        
+      });
     
     app.post("/cart-list", async (req, res) => {
         const cartItem = req.body;

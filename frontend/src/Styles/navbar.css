@@ -67,8 +67,9 @@
             text-transform: uppercase;
             /* background-color: skyblue; */
             border: none;
-            padding: 8px 15px;
+            padding: 12px 15px;
             border-radius: 5px;
+            margin-top: 50px;
             .login-btn{
                 /* background-color: #fff; */
                 color: white;
@@ -95,7 +96,7 @@
 
 .slide-user-div{
     /* border: 1px solid red; */
-    background-color: rgb(95, 84, 84);
+    background-color:rgb(190, 226, 238);
     display: none;
     top: 60px;
     padding: 20px;
@@ -104,4 +105,20 @@
     min-height: 100vh;
     z-index: 1000;
     position: absolute;
+}
+#slide-bar-ul{
+    /* border: 1px solid red; */
+    display: flex;
+    margin: 0px !important;
+    flex-direction: column;
+    li{
+        font-size: 18px;
+        /* padding-left: 6px !important; */
+        padding: 8px 6px !important;
+
+    }
+    li:hover{
+        cursor: pointer;
+        background-color: rgb(105, 104, 102) !important;
+    }
 }

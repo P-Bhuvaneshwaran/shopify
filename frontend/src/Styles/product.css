@@ -33,6 +33,11 @@
                     border-radius: 15px;
                     border: none;
                     outline: none;
+                    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                    letter-spacing: 0.9px;
+                }
+                input:focus{
+                    border: 1px solid grey;
                 }
                 #prod-body-searchIcon{
                     background-color: rgb(104, 99, 99);
@@ -43,12 +48,18 @@
                     position: absolute;
                     border-radius: 50%;
                 }
+                #prod-body-searchIcon:hover{
+                    background-color: black;
+                    i{
+                        font-size: 15px;
+                    }
+                }
             }
         }
 
         #product-details{
             display: grid;
-            grid-template-columns: 20% 80%;
+            grid-template-columns: 18% 80%;
 
             #prod-list{
                 ul{
@@ -56,20 +67,26 @@
                     width: 100%;
                     background-color: rgb(126, 124, 124);
                     height: 100%;
+                    padding: 15px 0px !important;
                     li{
                         overflow: hidden;
-                        padding: 10px;
+                        padding: 12px 10px !important;
+                        /* padding: 10px; */
                         width: 100%;
                         display: flex;
                         align-items: center;
                         flex-wrap: nowrap;
                         i{
+                            padding-left: 8px;
                             /* border: 1px solid red; */
                             font-size: 16px;
                             width: 20px;
                         }
                         span{
+                            font-family: Arial, Helvetica, sans-serif;
                             width: 100%;
+                            /* font-weight: 550; */
+                            /* font-size: 16px; */
                             /* border: 1px solid blue; */
                             padding-left: 10%;
                         }
@@ -77,10 +94,11 @@
                     li:hover{
                         font-family: Arial, Helvetica, sans-serif;
                         background-color: rgb(184, 189, 189);
+                        cursor: pointer;
                         span{
-                            cursor: pointer;
-                            color: grey;
-                            /* font-weight: bold; */
+                            /* color: grey; */
+                            color: black;
+                            font-weight: bold;
                         }
                     }
                     
@@ -104,12 +122,15 @@
                         padding: 5px 30px;
 
                         ul{
+                            /* border: 1px solid red; */
+                            position: relative;
                             display: flex;
                             /* justify-content: space-between; */
                             align-items: center;
                             /* justify-content: space-evenly; */
                         
                             li{
+                                cursor: pointer;
                                 /* border: 1px solid black; */
                                 padding: 5px 10px;
                                 margin: 0px 15px;
@@ -122,6 +143,19 @@
                                 background-color: rgb(0, 0, 0);
                                 color: white;
                             }
+
+                            .fa-circle-xmark{
+                                color: black;
+                                position: absolute;
+                                right: 0;
+                                /* float: right; */
+                            }
+                            .fa-circle-xmark:hover{
+                                color: red;
+                                /* font-weight: bold; */
+                                font-size: 20px;
+                                cursor: pointer;
+                            }
                         }
                     }
                 }
@@ -129,9 +163,10 @@
                 #prod-list-details-middle{
                     /* background-color: lightgreen; */
                     display: grid;
-                    grid-template-columns: 1fr 1fr 1fr 1fr;
+                    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
                     gap: 20px;
                     padding: 10px;
+                    /* margin-left: 20px; */
 
                     .prod-showcase{
                         background-color: rgb(255, 255, 255);
@@ -147,7 +182,7 @@
                         .heartSpan{
                             /* border: 1px solid black; */
                             i{
-
+                                cursor: pointer;
                                 float: right;
                                 padding: 3px;
                                 color: transparent;    /* Makes the inside transparent */
@@ -172,6 +207,7 @@
                                 /* border: 1px solid; */
                                 padding: 5px 0px 2px 0px;
                                 font-size: 14px;
+                                line-height: 18px;
                                 /* font-weight: 600; */
                                 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
                             }
@@ -204,7 +240,8 @@
                                 font-size: 12px;
                                 background-color: rgba(255, 115, 0, 0.616);
                                 color: white;
-                                margin-bottom: 20px;
+                                margin-bottom: 5px;
+                                left: 8px;
                                 /* display: flex; */
                                 position: absolute;
                                 /* align-self:flex-start; */

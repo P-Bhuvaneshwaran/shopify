@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            margin-top: 100px;
+            justify-content: center;
+        }
+        div{
+            overflow: hidden;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        p{
+            height: 20px;
+            background-color: lightblue;
+            transform: translateY(0px);
+            animation: load infinite ease-out 3s;
+        }
+        @keyframes load {
+            from{
+                transform: translateY(-10px);
+            }
+            to{
+                transform: translateY(90px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="">
+        <p></p>
+    </div>
+</body>
+</html>

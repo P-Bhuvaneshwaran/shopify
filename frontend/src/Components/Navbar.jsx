@@ -25,7 +25,7 @@ useEffect(()=>{
                 console.log("customer")
                 console.log(user.email);
                 setIsAdmin(false)
-                navigate("/home")
+                navigate("/")
             }
         }
         else{
@@ -63,7 +63,7 @@ useEffect(()=>{
                 <nav>
                     <h1><i class="fa-brands fa-shopify"></i>Shopify</h1>
                     {!isAdmin ? 
-                    <ul>
+                    <ul id="nav-ul">
                         <li><NavLink className="nav-link" to={'/'} end>Home</NavLink></li>
                         <li><NavLink className="nav-link" to={'/about-us'}>About</NavLink></li>
                         <li><NavLink className="nav-link" to={'/products'}>Products</NavLink></li>
@@ -93,8 +93,11 @@ useEffect(()=>{
                     </div>
                             {/* <li><NavLink to={'/admin/dashboard'}>Dashboard</NavLink></li> */}
                             <div className="slide-user-div" style={{display: isactive ? "block" : "none"}}>
-                            {isUserLogged ? <button className="auth-btn home-nav2-link"> <NavLink className="login-btn" onClick={handleSignedOut}>Logout</NavLink></button> : <button className="auth-btn home-nav2-link"> <NavLink to={"/auth-login"} className="login-btn">Login</NavLink></button>}
-                                
+                                <ul id="slide-bar-ul">
+                                <li>My Favrouits</li>
+                                <li>My Profile</li>
+                                {isUserLogged ? <button className="auth-btn home-nav2-link"> <NavLink className="login-btn" onClick={handleSignedOut}>Logout</NavLink></button> : <button className="auth-btn home-nav2-link"> <NavLink to={"/auth-login"} className="login-btn">Login</NavLink></button>}
+                                </ul>
                             </div>
                     
                 </nav>

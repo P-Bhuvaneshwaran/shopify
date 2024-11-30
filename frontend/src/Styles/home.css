@@ -224,3 +224,45 @@
     font-weight: bold;
     padding: 15px 30px;
 }
+
+.top-cat-load{
+.img-holder{
+    overflow: hidden;
+    border: 1px solid grey;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(24, 24, 24) !important;
+    border-radius: 50%;
+
+    span{
+        width: inherit;
+        height: 22px;
+        background-color: rgb(46, 43, 43);
+        /* transform: translateY(0px); */
+        /* animation: load infinite ease-out 3s; */
+        animation: load infinite linear 2.5s;
+    }
+}
+}
+@keyframes load {
+    0%{
+        transform: translateY(-45px);
+    }
+    25%{
+        transform: translateY(-20px);
+        height: 24px;
+    }
+    50%{
+        transform: translateY(20px);
+        height: 28px;
+    }
+    75%{
+        transform: translateY(35px);
+        height: 24px;
+    }
+    100%{
+        transform: translateY(50px);
+        height: 22px;
+    }
+}
+
